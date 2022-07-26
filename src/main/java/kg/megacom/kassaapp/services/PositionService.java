@@ -22,4 +22,8 @@ public class PositionService {
         else
             PositionDB.getINSTANCE().update(position);
     }
+
+    public Position findPositionById(int positionId) {
+        return null;
+    }
 }

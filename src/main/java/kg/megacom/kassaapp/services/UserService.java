@@ -1,18 +1,16 @@
 package kg.megacom.kassaapp.services;
 
-import kg.megacom.kassaapp.db.PositionDB;
 import kg.megacom.kassaapp.db.UserDB;
-import kg.megacom.kassaapp.models.Position;
 import kg.megacom.kassaapp.models.User;
 
-import java.sql.SQLException;
+import java.util.List;
 
 public class UserService {
 
     private static UserService INSTANCE;
 
-    public static UserService getINSTANCE(){
-        if (INSTANCE == null){
+    public static UserService getINSTANCE() {
+        if (INSTANCE == null) {
             INSTANCE = new UserService();
         }
         return INSTANCE;
@@ -24,27 +22,20 @@ public class UserService {
         2. Сделать редактирование
     * */
     public boolean addOrEditUser(User user) {
-        if (user.getId() == null) {
-            System.out.println("add");
-        } else {
-            System.out.println("edit");
-        }
-
-        return true;
+        return save(user);
     }
 
-    public void save(User user) {
-        /*
-        * Добавили новый код
-        *
-        * */
+    private boolean save(User user) {
         if (user.getId() == null)
-            UserDB.getINSTANCE().insert(user);
+            return UserDB.getINSTANCE().insert(user);
         else
-            UserDB.getINSTANCE().update(user);
+            return UserDB.getINSTANCE().update(user);
+
     }
 
-
+    public List<User> findAllUsers() {
+        return null;
+    }
 
 
 }
