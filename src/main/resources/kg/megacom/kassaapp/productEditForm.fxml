@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane prefHeight="397.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.megacom.kassaapp.controllers.ProductEditController">
+   <children>
+      <GridPane layoutX="82.0" layoutY="62.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.20001220703125" minWidth="10.0" prefWidth="116.79996337890626" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.79999542236328" minWidth="10.0" prefWidth="146.4000366210938" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Наименование" />
+            <Label text="Штрих-код" GridPane.rowIndex="2" />
+            <Label text="Скидка" GridPane.rowIndex="4" />
+            <Label text="Цена" GridPane.rowIndex="1" />
+            <Label text="Количество" GridPane.rowIndex="3" />
+            <Label text="Категория" GridPane.rowIndex="5" />
+            <Label text="Единица измерения" GridPane.rowIndex="6" />
+            <TextField fx:id="txtName" GridPane.columnIndex="1" />
+            <TextField fx:id="txtBarcode" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtPrice" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtAmount" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtDiscount" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="cmbCategories" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="cmbUnits" prefHeight="26.0" prefWidth="211.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+      <ButtonBar layoutX="136.0" layoutY="298.0" prefHeight="40.0" prefWidth="235.0">
+        <buttons>
+          <Button defaultButton="true" mnemonicParsing="false" onAction="#onSaveClicked" prefHeight="26.0" prefWidth="126.0" text="Сохранить" />
+            <Button cancelButton="true" layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#onCancelClicked" text="Отмена" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>
