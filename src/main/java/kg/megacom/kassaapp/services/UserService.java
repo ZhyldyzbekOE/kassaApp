@@ -34,6 +34,10 @@ public class UserService {
     }
 
     public void save(User user) {
+        /*
+        * Добавили новый код
+        *
+        * */
         if (user.getId() == null)
             UserDB.getINSTANCE().insert(user);
         else
