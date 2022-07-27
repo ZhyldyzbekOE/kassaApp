@@ -36,5 +36,9 @@ public class UserService {
         return UserDB.getINSTANCE().getUserById(userId);
     }
 
+    public boolean deleteUser(int id) {
+        return UserDB.getINSTANCE().deleteUserById(id);
+    }
+
 
 }

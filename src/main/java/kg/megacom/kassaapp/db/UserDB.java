@@ -134,4 +134,21 @@ public class UserDB {
         return userList;
     }
 
+    public boolean deleteUserById (int id) {
+        Connection connection = null;
+        try {
+            connection = ConnectionDB.getConnection();
+            String query = "delete from users where id = ?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            int countDeletedRows = ps.executeUpdate();
+            return countDeletedRows >= 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionDB.close(connection);
+        }
+        return false;
+    }
+
 }

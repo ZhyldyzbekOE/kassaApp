@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import kg.megacom.kassaapp.models.Position;
+import kg.megacom.kassaapp.models.User;
 
 public class UserFormController {
 
@@ -25,7 +27,22 @@ public class UserFormController {
     private TextField txtUserPassword;
 
     @FXML
-    private ComboBox<?> comBxPosition;
+    private ComboBox<Position> comBxPosition;
+
+    private User user;
+
+    public void setUser(User user) {
+        System.out.println("LOG -- " + user);
+        this.user = user;
+
+        if (this.user.getId() != null) {
+            txtUserName.setText(this.user.getName());
+            txtUserLogin.setText(this.user.getLogin());
+            txtUserPassword.setText(this.user.getPassword());
+
+            comBxPosition.getSelectionModel().select(this.user.getPosition());
+        }
+    }
 
     @FXML
     void saveButtonEvent(ActionEvent event) {

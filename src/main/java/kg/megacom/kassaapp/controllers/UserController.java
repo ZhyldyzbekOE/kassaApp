@@ -55,10 +55,16 @@ public class UserController {
         } else if (event.getSource().equals(mnItemEdit)) {
             userEdit();
         } else if (mnItemDelete.equals(event.getSource())) {
-            System.out.println("Удаление");
+            deleteUser(tbUsers.getSelectionModel().getSelectedItem());
         } else {
             throw new RuntimeException("Ошибка при заргузке окна!");
         }
+    }
+
+    private void deleteUser(User selectedItem) {
+        System.out.println("LOG -- " + selectedItem.getId());
+        UserService.getINSTANCE().deleteUser(selectedItem.getId());
+        refreshTableUsers();
     }
 
     private void userEdit() {
@@ -71,7 +77,7 @@ public class UserController {
 
     private void showForm(User user) {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("userAddForm.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("usersAddForm.fxml"));
         try {
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
@@ -79,11 +85,11 @@ public class UserController {
             stage.setResizable(false);
 
             UserFormController controller = loader.getController();
-            //controller.setProduct(product);
+            controller.setUser(user);
 
-            //stage.showAndWait();
+            stage.showAndWait();
 
-            //refreshTable();
+            refreshTableUsers();
 
         } catch (IOException e) {
             e.printStackTrace();
