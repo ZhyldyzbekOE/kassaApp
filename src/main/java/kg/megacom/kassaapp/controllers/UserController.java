@@ -1,13 +1,23 @@
 package kg.megacom.kassaapp.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.User;
+import kg.megacom.kassaapp.services.UserService;
 
 public class UserController {
 
@@ -40,12 +50,56 @@ public class UserController {
 
     @FXML
     void onMenuItemClicked(ActionEvent event) {
+        if (event.getSource().equals(mnItemAdd)) {
+            userAdd();
+        } else if (event.getSource().equals(mnItemEdit)) {
+            userEdit();
+        } else if (mnItemDelete.equals(event.getSource())) {
+            System.out.println("Удаление");
+        } else {
+            throw new RuntimeException("Ошибка при заргузке окна!");
+        }
+    }
 
+    private void userEdit() {
+        showForm(tbUsers.getSelectionModel().getSelectedItem());
+    }
+
+    private void userAdd() {
+        showForm(new User());
+    }
+
+    private void showForm(User user) {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("userAddForm.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+
+            UserFormController controller = loader.getController();
+            //controller.setProduct(product);
+
+            //stage.showAndWait();
+
+            //refreshTable();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void initialize() {
+        tbUserName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tbUserLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
+        tbUserPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
+        refreshTableUsers();
+    }
 
+    private void refreshTableUsers(){
+        tbUsers.setItems(FXCollections.observableList(UserService.getINSTANCE().findAllUsers()));
     }
 }
 

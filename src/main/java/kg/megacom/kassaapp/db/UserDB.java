@@ -74,6 +74,38 @@ public class UserDB {
         return false;
     }
 
+    public User getUserById(int id) {
+        Connection connection = null;
+
+        User user = null;
+        try {
+            connection = ConnectionDB.getConnection();
+            String query = "select us.id, us.name, us.login, us.password, p.id, p.name from users us join position p" +
+                    " on us.position_id = p.id where us.id = ?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            user = new User();
+            user.setId(rs.getInt(1));
+            user.setName(rs.getString(2));
+            user.setLogin(rs.getString(3));
+            user.setPassword(rs.getString(4));
+            int positionId = rs.getInt(5);
+            String posName = rs.getString(6);
+            user.setPosition(new Position(positionId, posName));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionDB.close(connection);
+        }
+        return user;
+    }
+
+
+
     public List<User> getAllUsersFromDb() {
         Connection connection = null;
         List<User> userList = new ArrayList<>();

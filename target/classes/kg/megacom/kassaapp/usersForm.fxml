@@ -7,35 +7,27 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.megacom.kassaapp.controllers.ProductsController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Правка">
-            <items>
-              <MenuItem fx:id="mnItemAdd" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Добавить" />
-                  <MenuItem fx:id="mnItemEdit" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Редактировать" />
-                  <MenuItem fx:id="mnItemDelete" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Удалить" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.megacom.kassaapp.controllers.UserController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Действия">
+                    <items>
+                        <MenuItem fx:id="mnItemAdd" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Добавить" />
+                        <MenuItem fx:id="mnItemEdit" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Редактировать" />
+                        <MenuItem fx:id="mnItemDelete" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Удалить" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
    <center>
-      <TableView fx:id="tbProducts" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbUsers" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="colmName" prefWidth="175.20001220703125" text="Наименование" />
-          <TableColumn fx:id="colmPrice" minWidth="6.4000244140625" prefWidth="73.5999755859375" text="Цена" />
-            <TableColumn fx:id="colmBarcode" prefWidth="74.39990234375" text="Штрих-код" />
-            <TableColumn fx:id="colmAmount" prefWidth="77.5999755859375" text="Количество" />
-            <TableColumn fx:id="colmDiscount" prefWidth="51.20001220703125" text="Скидка" />
-            <TableColumn fx:id="colmCategory" prefWidth="154.4000244140625" text="Категория" />
-            <TableColumn fx:id="colmUnit" prefWidth="129.5999755859375" text="Единица измерения" />
+          <TableColumn fx:id="tbUserName" prefWidth="213.60000610351562" text="Имя" />
+          <TableColumn fx:id="tbUserLogin" prefWidth="276.0000305175781" text="Логин" />
+            <TableColumn fx:id="tbUserPosition" prefWidth="337.59991455078125" text="Позиция" />
         </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
       </TableView>
    </center>
 </BorderPane>

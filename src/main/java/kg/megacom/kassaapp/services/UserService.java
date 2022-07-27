@@ -16,11 +16,6 @@ public class UserService {
         return INSTANCE;
     }
 
-
-    /*
-        1. Создать позицию далее создать user
-        2. Сделать редактирование
-    * */
     public boolean addOrEditUser(User user) {
         return save(user);
     }
@@ -34,7 +29,11 @@ public class UserService {
     }
 
     public List<User> findAllUsers() {
-        return null;
+        return UserDB.getINSTANCE().getAllUsersFromDb();
+    }
+
+    public User findOneUserById(int userId) {
+        return UserDB.getINSTANCE().getUserById(userId);
     }
 
 

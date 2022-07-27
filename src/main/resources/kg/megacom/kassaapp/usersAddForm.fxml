@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.megacom.kassaapp.controllers.UserFormController">
    <children>
-      <TextField layoutX="67.0" layoutY="65.0" promptText="Имя" />
-      <TextField layoutX="67.0" layoutY="118.0" promptText="Логин" />
-      <TextField layoutX="291.0" layoutY="65.0" promptText="Пароль" />
-      <ComboBox layoutX="290.0" layoutY="118.0" prefWidth="150.0" promptText="Позиция" />
-      <Button layoutX="217.0" layoutY="261.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Сохранить" />
+      <TextField fx:id="txtUserName" layoutX="67.0" layoutY="65.0" promptText="Имя" />
+      <TextField fx:id="txtUserLogin" layoutX="67.0" layoutY="118.0" promptText="Логин" />
+      <TextField fx:id="txtUserPassword" layoutX="67.0" layoutY="165.0" promptText="Пароль" />
+      <ComboBox fx:id="comBxPosition" layoutX="66.0" layoutY="221.0" prefWidth="150.0" promptText="Позиция" />
+      <Button layoutX="217.0" layoutY="315.0" mnemonicParsing="false" onAction="#saveButtonEvent" prefHeight="26.0" prefWidth="114.0" text="Сохранить" />
    </children>
 </AnchorPane>

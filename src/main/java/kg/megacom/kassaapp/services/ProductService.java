@@ -27,7 +27,6 @@ public class ProductService {
         return ProductDB.getINSTANCE().findProductByBarcode(barcode);
     }
 
-
     public List<Product> getProducts(){
         return ProductDB.getINSTANCE().selectProducts();
     }
