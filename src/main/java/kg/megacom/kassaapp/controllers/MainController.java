@@ -17,6 +17,7 @@ import kg.megacom.kassaapp.services.impl.ProductService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainController {
 
@@ -33,6 +34,9 @@ public class MainController {
 
     @FXML
     private Button btnEnter;
+
+    @FXML
+    private Button btnClose;
 
     @FXML
     private TableColumn<String, OperationProducts> colmAmount;
@@ -70,6 +74,14 @@ public class MainController {
         addProductToList(product);
 
         refreshList();
+    }
+
+    @FXML
+    void onCloseBtnAction(ActionEvent event) {
+        System.out.println(operationProductsList);
+        System.out.println(txtTotal.getText());
+//        List<OperationProducts> listItem = new ArrayList<>(tbOperations.getItems());
+//        System.out.println(listItem);
     }
 
     private void addProductToList(Product product){

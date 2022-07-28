@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.megacom.kassaapp.controllers.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.megacom.kassaapp.controllers.MainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -51,6 +51,7 @@
                   <TextField fx:id="txtTotal" editable="false" layoutX="79.0" layoutY="489.0" prefHeight="46.0" prefWidth="134.0" />
                   <TextField fx:id="txtBarcode" layoutX="37.0" layoutY="57.0" prefHeight="26.0" prefWidth="163.0" />
                   <Button fx:id="btnEnter" defaultButton="true" layoutX="88.0" layoutY="95.0" mnemonicParsing="false" onAction="#onEnterButtonClicked" prefHeight="26.0" prefWidth="110.0" text="Найти" />
+                  <Button fx:id="btnClose" layoutX="91.0" layoutY="154.0" mnemonicParsing="false" onAction="#onCloseBtnAction" prefHeight="26.0" prefWidth="110.0" text="Завершить" />
                </children></AnchorPane>
         </items>
       </SplitPane>
