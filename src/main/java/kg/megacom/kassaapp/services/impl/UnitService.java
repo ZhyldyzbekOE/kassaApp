@@ -1,9 +1,8 @@
-package kg.megacom.kassaapp.services;
+package kg.megacom.kassaapp.services.impl;
 
 import kg.megacom.kassaapp.db.UnitDB;
 import kg.megacom.kassaapp.models.Unit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UnitService {

@@ -1,4 +1,4 @@
-package kg.megacom.kassaapp.services;
+package kg.megacom.kassaapp.services.impl;
 
 import kg.megacom.kassaapp.db.ProductDB;
 import kg.megacom.kassaapp.models.Product;

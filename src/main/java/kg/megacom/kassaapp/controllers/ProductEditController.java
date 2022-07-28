@@ -8,14 +8,14 @@ import javafx.scene.control.TextField;
 import kg.megacom.kassaapp.models.Category;
 import kg.megacom.kassaapp.models.Product;
 import kg.megacom.kassaapp.models.Unit;
-import kg.megacom.kassaapp.services.CategoryService;
-import kg.megacom.kassaapp.services.ProductService;
-import kg.megacom.kassaapp.services.UnitService;
+import kg.megacom.kassaapp.services.impl.CategoryServiceImpl;
+import kg.megacom.kassaapp.services.impl.ProductService;
+import kg.megacom.kassaapp.services.impl.UnitService;
 
 public class ProductEditController {
 
     private Product product;
-    private CategoryService categoryService = CategoryService.getINSTANCE();
+    private CategoryServiceImpl categoryService = CategoryServiceImpl.getINSTANCE();
     private UnitService unitService = UnitService.getINSTANCE();
 
     @FXML

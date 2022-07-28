@@ -7,13 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.OperationProducts;
 import kg.megacom.kassaapp.models.Product;
-import kg.megacom.kassaapp.services.ProductService;
+import kg.megacom.kassaapp.services.impl.ProductService;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -26,7 +26,7 @@ public class UserDB {
         Connection connection = null;
         try {
             connection = ConnectionDB.getConnection();
-            String sql = "insert into users(name, login, password, position.id)" +
+            String sql = "insert into users(name, login, password, position_id)" +
                     "values(?,?,?,?)";
 
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -61,7 +61,7 @@ public class UserDB {
             ps.setString(2, user.getLogin());
             ps.setString(3, user.getPassword());
             ps.setInt(4, user.getPosition().getId());
-            ps.setString(5, user.getName());
+            ps.setInt(5, user.getId());
 
             int countUpdRow = ps.executeUpdate();
             ConnectionDB.close(connection);

@@ -1,9 +1,7 @@
 package kg.megacom.kassaapp.controllers;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -18,11 +16,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.Category;
-import kg.megacom.kassaapp.services.CategoryService;
+import kg.megacom.kassaapp.services.impl.CategoryServiceImpl;
 
 public class CategoryController {
 
-    private CategoryService categoryService = CategoryService.getINSTANCE();
+    private CategoryServiceImpl categoryService = CategoryServiceImpl.getINSTANCE();
 
     @FXML
     private ListView<Category> listViewCategories;

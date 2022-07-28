@@ -1,29 +1,17 @@
 package kg.megacom.kassaapp.services;
 
-import kg.megacom.kassaapp.db.PositionDB;
-import kg.megacom.kassaapp.db.ProductDB;
 import kg.megacom.kassaapp.models.Position;
-import kg.megacom.kassaapp.models.Product;
+import kg.megacom.kassaapp.services.impl.PositionServiceImpl;
 
-public class PositionService {
+import java.util.List;
 
-    private static PositionService INSTANCE;
+public interface PositionService {
 
-    public static PositionService getINSTANCE(){
-        if (INSTANCE == null){
-            INSTANCE = new PositionService();
-        }
-        return INSTANCE;
-    }
+    PositionService INSTANCE = new PositionServiceImpl();
 
-    public void save(Position position) {
-        if (position.getId() == null)
-            PositionDB.getINSTANCE().insert(position);
-        else
-            PositionDB.getINSTANCE().update(position);
-    }
+    void save(Position position);
 
-    public Position findPositionById(int positionId) {
-        return null;
-    }
+    Position findPositionById(int positionId);
+
+    List<Position> findAllPostions();
 }

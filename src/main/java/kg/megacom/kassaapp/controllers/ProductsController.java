@@ -12,9 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
-import kg.megacom.kassaapp.db.ProductDB;
 import kg.megacom.kassaapp.models.Product;
-import kg.megacom.kassaapp.services.ProductService;
+import kg.megacom.kassaapp.services.impl.ProductService;
 
 import java.io.IOException;
 

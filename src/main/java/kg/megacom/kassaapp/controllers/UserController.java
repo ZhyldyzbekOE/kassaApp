@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.User;
 import kg.megacom.kassaapp.services.UserService;
+import kg.megacom.kassaapp.services.impl.UserServiceImpl;
 
 public class UserController {
 
@@ -63,7 +64,7 @@ public class UserController {
 
     private void deleteUser(User selectedItem) {
         System.out.println("LOG -- " + selectedItem.getId());
-        UserService.getINSTANCE().deleteUser(selectedItem.getId());
+        UserServiceImpl.getINSTANCE().deleteUser(selectedItem.getId());
         refreshTableUsers();
     }
 
@@ -95,7 +96,6 @@ public class UserController {
             e.printStackTrace();
         }
     }
-
     @FXML
     void initialize() {
         tbUserName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -105,7 +105,7 @@ public class UserController {
     }
 
     private void refreshTableUsers(){
-        tbUsers.setItems(FXCollections.observableList(UserService.getINSTANCE().findAllUsers()));
+        tbUsers.setItems(FXCollections.observableList(UserService.INSTANCE.findAllUsers()));
     }
 }
 

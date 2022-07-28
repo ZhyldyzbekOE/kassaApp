@@ -6,13 +6,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import kg.megacom.kassaapp.models.Category;
-import kg.megacom.kassaapp.services.CategoryService;
+import kg.megacom.kassaapp.services.impl.CategoryServiceImpl;
 
 import java.sql.SQLException;
 
 public class CategoryEditController {
 
-    private CategoryService categoryService = CategoryService.getINSTANCE();
+    private CategoryServiceImpl categoryService = CategoryServiceImpl.getINSTANCE();
     private Category category;
 
 
