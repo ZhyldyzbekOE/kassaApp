@@ -13,20 +13,10 @@ import java.util.List;
 
 public class PositionDBImpl implements PositionDB {
 
-    private static PositionDBImpl INSTANCE;
-
-    public static PositionDBImpl getINSTANCE(){
-        if (INSTANCE == null){
-            INSTANCE = new PositionDBImpl();
-        }
-
-        return INSTANCE;
-    }
-
     public void insert(Position position){
         Connection connection = null;
         try {
-            connection = ConnectionDB.getConnection();
+            connection = ConnectionDB.INSTANCE.getConnection();
             String sql = "insert into position(name)" +
                     "values(?)";
 
@@ -39,7 +29,7 @@ public class PositionDBImpl implements PositionDB {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            ConnectionDB.close(connection);
+            ConnectionDB.INSTANCE.close(connection);
         }
 
     }
@@ -47,7 +37,7 @@ public class PositionDBImpl implements PositionDB {
     public void update(Position position) {
         Connection connection = null;
         try {
-            connection = ConnectionDB.getConnection();
+            connection = ConnectionDB.INSTANCE.getConnection();
             String sql = "update position set name = ? where id = ?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -60,7 +50,7 @@ public class PositionDBImpl implements PositionDB {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            ConnectionDB.close(connection);
+            ConnectionDB.INSTANCE.close(connection);
         }
     }
 
@@ -69,7 +59,7 @@ public class PositionDBImpl implements PositionDB {
         Connection connection = null;
         List<Position> positionList = new ArrayList<>();
         try {
-            connection = ConnectionDB.getConnection();
+            connection = ConnectionDB.INSTANCE.getConnection();
             String query = "select * from position";
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -82,7 +72,7 @@ public class PositionDBImpl implements PositionDB {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            ConnectionDB.close(connection);
+            ConnectionDB.INSTANCE.close(connection);
         }
         return positionList;
     }

@@ -1,24 +1,15 @@
 package kg.megacom.kassaapp.db;
 
+import kg.megacom.kassaapp.db.impl.ConnectionDBImpl;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionDB {
+public interface ConnectionDB {
 
-    public static Connection getConnection() throws SQLException {
+    ConnectionDB INSTANCE = new ConnectionDBImpl();
+    Connection getConnection() throws SQLException;
 
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:D:\\products-db.db");
-        return connection;
-    }
+    void close(Connection connection);
 
-    public static void close(Connection connection) {
-        if (connection != null){
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

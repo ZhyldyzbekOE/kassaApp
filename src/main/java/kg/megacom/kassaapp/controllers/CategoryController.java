@@ -16,11 +16,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.Category;
+import kg.megacom.kassaapp.services.CategoryService;
 import kg.megacom.kassaapp.services.impl.CategoryServiceImpl;
 
 public class CategoryController {
 
-    private CategoryServiceImpl categoryService = CategoryServiceImpl.getINSTANCE();
+    //private CategoryServiceImpl categoryService = CategoryServiceImpl.getINSTANCE();
 
     @FXML
     private ListView<Category> listViewCategories;
@@ -51,7 +52,7 @@ public class CategoryController {
 
         if (result.equals(ButtonType.YES)){
             Category category = listViewCategories.getSelectionModel().getSelectedItem();
-            categoryService.delete(category.getId());
+            CategoryService.INSTANCE.delete(category.getId());
             refreshList();
         }
     }
@@ -109,7 +110,7 @@ public class CategoryController {
     }
 
     private void refreshList() {
-        List<Category> categories = categoryService.getCategories();
+        List<Category> categories = CategoryService.INSTANCE.getCategories();
         listViewCategories.setItems(FXCollections.observableList(categories));
 
     }

@@ -10,33 +10,21 @@ import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService {
 
-    private CategoryDB categoryDB = CategoryDB.getINSTANCE();
-
-    private static CategoryServiceImpl INSTANCE;
-
-    public static CategoryServiceImpl getINSTANCE(){
-        if (INSTANCE == null){
-            INSTANCE = new CategoryServiceImpl();
-        }
-        return INSTANCE;
-    }
-
-
     public void save(Category category) throws SQLException {
         if (category.getId() == null)
-            categoryDB.insert(category);
+            CategoryDB.INSTANCE.insert(category);
         else
-            categoryDB.update(category);
+            CategoryDB.INSTANCE.update(category);
 
     }
 
     public List<Category> getCategories() {
-        return categoryDB.findAll();
+        return CategoryDB.INSTANCE.findAll();
     }
 
     public void delete(Integer id) {
         try {
-            categoryDB.delete(id);
+            CategoryDB.INSTANCE.delete(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }

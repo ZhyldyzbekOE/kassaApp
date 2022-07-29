@@ -8,37 +8,28 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private static UserServiceImpl INSTANCE;
-
-    public static UserServiceImpl getINSTANCE() {
-        if (INSTANCE == null) {
-            INSTANCE = new UserServiceImpl();
-        }
-        return INSTANCE;
-    }
-
     public boolean addOrEditUser(User user) {
         return save(user);
     }
 
     private boolean save(User user) {
         if (user.getId() == null)
-            return UserDB.getINSTANCE().insert(user);
+            return UserDB.INSTANCE.insert(user);
         else
-            return UserDB.getINSTANCE().update(user);
+            return UserDB.INSTANCE.update(user);
 
     }
 
     public List<User> findAllUsers() {
-        return UserDB.getINSTANCE().getAllUsersFromDb();
+        return UserDB.INSTANCE.getAllUsersFromDb();
     }
 
     public User findOneUserById(int userId) {
-        return UserDB.getINSTANCE().getUserById(userId);
+        return UserDB.INSTANCE.getUserById(userId);
     }
 
     public boolean deleteUser(int id) {
-        return UserDB.getINSTANCE().deleteUserById(id);
+        return UserDB.INSTANCE.deleteUserById(id);
     }
 
 

@@ -8,15 +8,16 @@ import javafx.scene.control.TextField;
 import kg.megacom.kassaapp.models.Category;
 import kg.megacom.kassaapp.models.Product;
 import kg.megacom.kassaapp.models.Unit;
-import kg.megacom.kassaapp.services.impl.CategoryServiceImpl;
-import kg.megacom.kassaapp.services.impl.ProductService;
-import kg.megacom.kassaapp.services.impl.UnitService;
+import kg.megacom.kassaapp.services.CategoryService;
+import kg.megacom.kassaapp.services.ProductService;
+import kg.megacom.kassaapp.services.UnitService;
+import kg.megacom.kassaapp.services.impl.ProductServiceImpl;
 
 public class ProductEditController {
 
     private Product product;
-    private CategoryServiceImpl categoryService = CategoryServiceImpl.getINSTANCE();
-    private UnitService unitService = UnitService.getINSTANCE();
+    //private CategoryServiceImpl categoryService = CategoryServiceImpl.getINSTANCE();
+    //private UnitServiceImpl unitService = UnitServiceImpl.getINSTANCE();
 
     @FXML
     private ComboBox<Category> cmbCategories;
@@ -79,7 +80,7 @@ public class ProductEditController {
         product.setCategory(category);
         product.setUnit(unit);
 
-        ProductService.getINSTANCE().save(product);
+        ProductService.INSTANCE.save(product);
 
 
     }
@@ -87,8 +88,8 @@ public class ProductEditController {
     @FXML
     void initialize() {
 
-        cmbCategories.setItems(FXCollections.observableList(categoryService.getCategories()));
-        cmbUnits.setItems(FXCollections.observableList(unitService.getUnits()));
+        cmbCategories.setItems(FXCollections.observableList(CategoryService.INSTANCE.getCategories()));
+        cmbUnits.setItems(FXCollections.observableList(UnitService.INSTANCE.getUnits()));
 
 
     }

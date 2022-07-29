@@ -12,12 +12,12 @@ import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.OperationProducts;
 import kg.megacom.kassaapp.models.Product;
-import kg.megacom.kassaapp.services.impl.ProductService;
+import kg.megacom.kassaapp.services.ProductService;
+import kg.megacom.kassaapp.services.impl.ProductServiceImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainController {
 
@@ -69,7 +69,7 @@ public class MainController {
     @FXML
     void onEnterButtonClicked(ActionEvent event) {
 
-        Product product = ProductService.getINSTANCE().findProductByBarcode(txtBarcode.getText());
+        Product product = ProductService.INSTANCE.findProductByBarcode(txtBarcode.getText());
 
         addProductToList(product);
 

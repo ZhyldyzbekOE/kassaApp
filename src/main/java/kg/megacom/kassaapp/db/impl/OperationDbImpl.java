@@ -13,7 +13,7 @@ public class OperationDbImpl implements OperationDb {
     public Operation saveOperation(Operation operation) {
         Connection connection = null;
         try {
-            connection = ConnectionDB.getConnection();
+            connection = ConnectionDB.INSTANCE.getConnection();
             String query = "insert into operation(oper_date, total_price) values (?, ?)";
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, operation.getAddDate().toString());
@@ -22,6 +22,8 @@ public class OperationDbImpl implements OperationDb {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            ConnectionDB.INSTANCE.close(connection);
         }
         return null;
     }

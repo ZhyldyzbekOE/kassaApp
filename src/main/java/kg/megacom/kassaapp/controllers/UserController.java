@@ -64,7 +64,7 @@ public class UserController {
 
     private void deleteUser(User selectedItem) {
         System.out.println("LOG -- " + selectedItem.getId());
-        UserServiceImpl.getINSTANCE().deleteUser(selectedItem.getId());
+        UserService.INSTANCE.deleteUser(selectedItem.getId());
         refreshTableUsers();
     }
 
