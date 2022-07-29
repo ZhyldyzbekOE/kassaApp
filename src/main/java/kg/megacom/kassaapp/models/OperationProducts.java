@@ -61,13 +61,6 @@ public class OperationProducts {
 
     @Override
     public String toString() {
-        return "OperationProducts{" +
-                "id=" + id +
-                ", amount=" + amount +
-                ", priceWithDiscount=" + priceWithDiscount +
-                ", total=" + total +
-                ", operation=" + operation +
-                ", product=" + product +
-                '}';
+        return product +" - " + amount;
     }
 }

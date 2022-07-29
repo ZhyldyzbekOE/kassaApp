@@ -49,9 +49,10 @@
                <children>
                   <Label layoutX="29.0" layoutY="504.0" text="Итого:" />
                   <TextField fx:id="txtTotal" editable="false" layoutX="79.0" layoutY="489.0" prefHeight="46.0" prefWidth="134.0" />
-                  <TextField fx:id="txtBarcode" layoutX="37.0" layoutY="57.0" prefHeight="26.0" prefWidth="163.0" />
-                  <Button fx:id="btnEnter" defaultButton="true" layoutX="88.0" layoutY="95.0" mnemonicParsing="false" onAction="#onEnterButtonClicked" prefHeight="26.0" prefWidth="110.0" text="Найти" />
-                  <Button fx:id="btnClose" layoutX="91.0" layoutY="154.0" mnemonicParsing="false" onAction="#onCloseBtnAction" prefHeight="26.0" prefWidth="110.0" text="Завершить" />
+                  <TextField fx:id="txtBarcode" layoutX="39.0" layoutY="58.0" prefHeight="26.0" prefWidth="163.0" />
+                  <Button fx:id="btnEnter" defaultButton="true" layoutX="91.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEnterButtonClicked" prefHeight="26.0" prefWidth="110.0" text="Найти" />
+                  <Button fx:id="btnClose" layoutX="98.0" layoutY="416.0" mnemonicParsing="false" onAction="#onCloseBtnAction" prefHeight="26.0" prefWidth="110.0" text="Завершить" />
+                  <TextField fx:id="txtUserCash" layoutX="53.0" layoutY="369.0" prefHeight="26.0" prefWidth="156.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

@@ -9,5 +9,7 @@ public interface OperationDb {
 
     Operation saveOperation(Operation operation);
 
+    Operation findOperationByTotalPriceAndOperDate(double totalPrice, String operDate);
+
 
 }

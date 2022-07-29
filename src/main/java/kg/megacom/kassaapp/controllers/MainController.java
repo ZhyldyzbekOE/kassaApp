@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.OperationProducts;
 import kg.megacom.kassaapp.models.Product;
+import kg.megacom.kassaapp.services.OperationService;
 import kg.megacom.kassaapp.services.ProductService;
-import kg.megacom.kassaapp.services.impl.ProductServiceImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,6 +67,9 @@ public class MainController {
     private TextField txtTotal;
 
     @FXML
+    private TextField txtUserCash;
+
+    @FXML
     void onEnterButtonClicked(ActionEvent event) {
 
         Product product = ProductService.INSTANCE.findProductByBarcode(txtBarcode.getText());
@@ -78,17 +81,54 @@ public class MainController {
 
     @FXML
     void onCloseBtnAction(ActionEvent event) {
-        System.out.println(operationProductsList);
-        System.out.println(txtTotal.getText());
-//        List<OperationProducts> listItem = new ArrayList<>(tbOperations.getItems());
-//        System.out.println(listItem);
+
+        if (txtUserCash.getText().trim().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Введите сумму для оплаты!");
+            alert.show();
+            return;
+        } else if (Double.parseDouble(txtUserCash.getText().trim()) >= Double.parseDouble(txtTotal.getText().trim())) {
+            boolean isSaveResult = OperationService
+                    .INSTANCE
+                    .closeAndSaveOperation(Double.parseDouble(txtTotal.getText()), 0, operationProductsList);
+            if (!isSaveResult) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Ошибка при закрытии операции!");
+                alert.show();
+                return;
+            }
+
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("chequeForm.fxml"));
+            try {
+                Scene scene = new Scene(loader.load());
+                stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
+
+                ChequeController controller = loader.getController();
+                controller.setData(Double.parseDouble(txtUserCash.getText().trim()) - Double.parseDouble(txtTotal.getText().trim())
+                        , operationProductsList);
+
+                stage.showAndWait();
+                operationProductsList.clear();
+                refreshList();
+                txtUserCash.clear();
+                txtBarcode.clear();
+                txtTotal.clear();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Не хватате денег для закрытия оперции!");
+            alert.show();
+        }
     }
 
-    private void addProductToList(Product product){
+    private void addProductToList(Product product) {
 
 
-        for (int i = 0; i < operationProductsList.size(); i++){
-            if (operationProductsList.get(i).getProduct().getId().equals(product.getId())){
+        for (int i = 0; i < operationProductsList.size(); i++) {
+            if (operationProductsList.get(i).getProduct().getId().equals(product.getId())) {
                 operationProductsList.get(i).setAmount(operationProductsList.get(i).getAmount() + 1);
                 operationProductsList.get(i).setTotal(operationProductsList.get(i).getAmount() * operationProductsList.get(i).getPriceWithDiscount());
                 return;
@@ -110,8 +150,8 @@ public class MainController {
         tbOperations.refresh();
 
         double total = 0;
-        for (OperationProducts item:operationProductsList
-             ) {
+        for (OperationProducts item : operationProductsList
+        ) {
             total += item.getTotal();
         }
 
@@ -121,9 +161,9 @@ public class MainController {
 
     @FXML
     void onMenuItemClicked(ActionEvent event) {
-        if (event.getSource().equals(mnItemCategories)){
+        if (event.getSource().equals(mnItemCategories)) {
             showCategoriesForm();
-        } else  if (event.getSource().equals(mnItemProducts)){
+        } else if (event.getSource().equals(mnItemProducts)) {
             showProductsForm();
         } else if (event.getSource().equals(mnItemUsers)) {
             showUserForm();
@@ -183,11 +223,6 @@ public class MainController {
         colmPrice.setCellValueFactory(new PropertyValueFactory<>("priceWithDiscount"));
         colmAmountPrice.setCellValueFactory(new PropertyValueFactory<>("total"));
         colmProduct.setCellValueFactory(new PropertyValueFactory<>("product"));
-
-
-
-
-
 
     }
 

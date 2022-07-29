@@ -10,10 +10,14 @@ public class Operation {
     private Integer id;
     private LocalDateTime addDate;
     private double total;
-    private OperStatus status;
-
     private User user;
 
+    public Operation() {}
+
+    public Operation(LocalDateTime addDate, double total) {
+        this.addDate = addDate;
+        this.total = total;
+    }
 
     public Integer getId() {
         return id;
@@ -37,14 +41,6 @@ public class Operation {
 
     public void setTotal(double total) {
         this.total = total;
-    }
-
-    public OperStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OperStatus status) {
-        this.status = status;
     }
 
     public User getUser() {
