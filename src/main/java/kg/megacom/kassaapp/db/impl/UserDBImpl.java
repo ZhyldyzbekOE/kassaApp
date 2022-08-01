@@ -144,4 +144,29 @@ public class UserDBImpl implements UserDB {
         return false;
     }
 
+    @Override
+    public User findUserByLoginAndPassword(String login, String password) {
+        Connection connection = null;
+        User userFromDb = null;
+        try {
+            connection = ConnectionDB.INSTANCE.getConnection();
+            String query = "select * from users where login = ?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                userFromDb = new User();
+                userFromDb.setId(rs.getInt("id"));
+                userFromDb.setName(rs.getString("name"));
+                userFromDb.setLogin(rs.getString("login"));
+                userFromDb.setPassword(rs.getString("password"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionDB.INSTANCE.close(connection);
+        }
+        return userFromDb;
+    }
+
 }

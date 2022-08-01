@@ -116,7 +116,7 @@ public class ProductDBImpl implements ProductDB {
 
     public Product findProductByBarcode(String barcode) {
         Connection connection = null;
-        Product product = new Product();
+        Product product = null;
 
         try {
             connection = ConnectionDB.INSTANCE.getConnection();
@@ -131,26 +131,27 @@ public class ProductDBImpl implements ProductDB {
 
             ResultSet resultSet = ps.executeQuery();
 
+            if (resultSet.next()) {
+                product = new Product();
+                product.setId(resultSet.getInt(1));
+                product.setName(resultSet.getString(2));
+                product.setBarcode(barcode);
+                product.setDiscount(resultSet.getInt(8));
+                product.setAmount(resultSet.getInt(7));
+                product.setPrice(resultSet.getDouble(4));
 
-            product.setId(resultSet.getInt(1));
-            product.setName(resultSet.getString(2));
-            product.setBarcode(barcode);
-            product.setDiscount(resultSet.getInt(8));
-            product.setAmount(resultSet.getInt(7));
-            product.setPrice(resultSet.getDouble(4));
+                Category category = new Category();
+                category.setId(resultSet.getInt(3));
+                category.setName(resultSet.getString(9));
 
-            Category category = new Category();
-            category.setId(resultSet.getInt(3));
-            category.setName(resultSet.getString(9));
+                product.setCategory(category);
 
-            product.setCategory(category);
+                Unit unit = new Unit();
+                unit.setId(resultSet.getInt(5));
+                unit.setName(resultSet.getString(10));
 
-            Unit unit = new Unit();
-            unit.setId(resultSet.getInt(5));
-            unit.setName(resultSet.getString(10));
-
-            product.setUnit(unit);
-
+                product.setUnit(unit);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

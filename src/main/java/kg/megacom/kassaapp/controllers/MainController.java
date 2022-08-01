@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import kg.megacom.kassaapp.Main;
 import kg.megacom.kassaapp.models.OperationProducts;
 import kg.megacom.kassaapp.models.Product;
+import kg.megacom.kassaapp.models.User;
 import kg.megacom.kassaapp.services.OperationService;
 import kg.megacom.kassaapp.services.ProductService;
 
@@ -70,10 +71,24 @@ public class MainController {
     private TextField txtUserCash;
 
     @FXML
+    private Label cashierNameId;
+
+    private User user;
+
+    public void setData(User user) {
+        this.user = user;
+        cashierNameId.setText(user.getName());
+    }
+
+    @FXML
     void onEnterButtonClicked(ActionEvent event) {
 
         Product product = ProductService.INSTANCE.findProductByBarcode(txtBarcode.getText());
-
+        if (product == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Товар по штрих-коду не найден!");
+            alert.show();
+            return;
+        }
         addProductToList(product);
 
         refreshList();
@@ -82,7 +97,11 @@ public class MainController {
     @FXML
     void onCloseBtnAction(ActionEvent event) {
 
-        if (txtUserCash.getText().trim().isEmpty()) {
+        if (operationProductsList.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Нет товаров для закрытия операции");
+            alert.show();
+            return;
+        } else if (txtUserCash.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Введите сумму для оплаты!");
             alert.show();
             return;

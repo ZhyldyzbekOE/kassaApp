@@ -13,19 +13,6 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.megacom.kassaapp.controllers.MainController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Справочники">
-            <items>
-              <MenuItem fx:id="mnItemUsers" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Пользователи" />
-                  <MenuItem fx:id="mnItemCategories" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Категории товаров" />
-                  <MenuItem fx:id="mnItemProducts" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Товары" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
    <center>
       <SplitPane dividerPositions="0.6821524064171122" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
@@ -49,10 +36,23 @@
                <children>
                   <Label layoutX="29.0" layoutY="504.0" text="Итого:" />
                   <TextField fx:id="txtTotal" editable="false" layoutX="79.0" layoutY="489.0" prefHeight="46.0" prefWidth="134.0" />
-                  <TextField fx:id="txtBarcode" layoutX="39.0" layoutY="58.0" prefHeight="26.0" prefWidth="163.0" />
-                  <Button fx:id="btnEnter" defaultButton="true" layoutX="91.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEnterButtonClicked" prefHeight="26.0" prefWidth="110.0" text="Найти" />
+                  <TextField fx:id="txtBarcode" layoutX="39.0" layoutY="79.0" prefHeight="26.0" prefWidth="163.0" promptText="Штрих-код товара" />
+                  <Button fx:id="btnEnter" defaultButton="true" layoutX="91.0" layoutY="121.0" mnemonicParsing="false" onAction="#onEnterButtonClicked" prefHeight="26.0" prefWidth="110.0" text="Найти" />
                   <Button fx:id="btnClose" layoutX="98.0" layoutY="416.0" mnemonicParsing="false" onAction="#onCloseBtnAction" prefHeight="26.0" prefWidth="110.0" text="Завершить" />
-                  <TextField fx:id="txtUserCash" layoutX="53.0" layoutY="369.0" prefHeight="26.0" prefWidth="156.0" />
+                  <TextField fx:id="txtUserCash" layoutX="53.0" layoutY="369.0" prefHeight="26.0" prefWidth="156.0" promptText="Сумма от пользователя" />
+                  <Label fx:id="cashierNameId" layoutX="138.0" layoutY="5.0" prefHeight="18.0" prefWidth="97.0" />
+                  <MenuBar layoutX="-184.0" layoutY="-2.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="Справочники">
+                        <items>
+                          <MenuItem fx:id="mnItemUsers" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Пользователи" />
+                              <MenuItem fx:id="mnItemCategories" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Категории товаров" />
+                              <MenuItem fx:id="mnItemProducts" mnemonicParsing="false" onAction="#onMenuItemClicked" text="Товары" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+                  <Label layoutX="78.0" layoutY="5.0" text="Кассир:" />
                </children></AnchorPane>
         </items>
       </SplitPane>

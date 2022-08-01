@@ -32,5 +32,10 @@ public class UserServiceImpl implements UserService {
         return UserDB.INSTANCE.deleteUserById(id);
     }
 
+    @Override
+    public User findUserByLoginAndPassword(String login, String password) {
+        return UserDB.INSTANCE.findUserByLoginAndPassword(login, password);
+    }
+
 
 }

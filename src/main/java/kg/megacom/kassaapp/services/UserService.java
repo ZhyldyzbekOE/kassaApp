@@ -17,4 +17,7 @@ public interface UserService {
     User findOneUserById(int userId);
 
     boolean deleteUser(int id);
+
+    User findUserByLoginAndPassword(String login, String password);
+
 }

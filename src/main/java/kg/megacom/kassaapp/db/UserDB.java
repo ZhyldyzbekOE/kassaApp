@@ -17,4 +17,6 @@ public interface UserDB {
     List<User> getAllUsersFromDb();
 
     boolean deleteUserById (int id);
+
+    User findUserByLoginAndPassword(String login, String password);
 }
