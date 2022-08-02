@@ -7,7 +7,7 @@ public interface OperationDb {
 
     OperationDb INSTANCE =new OperationDbImpl();
 
-    Operation saveOperation(Operation operation);
+    Operation saveOperation(Operation operation, int userId);
 
     Operation findOperationByTotalPriceAndOperDate(double totalPrice, String operDate);
 

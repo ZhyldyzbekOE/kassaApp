@@ -58,7 +58,6 @@ public class SignInController {
                 stage.setScene(scene);
                 stage.initModality(Modality.APPLICATION_MODAL);
                 MainController controller = loader.getController();
-                System.out.println("user -> " + user);
                 controller.setData(user);
                 stage.showAndWait();
             } catch (Exception e) {

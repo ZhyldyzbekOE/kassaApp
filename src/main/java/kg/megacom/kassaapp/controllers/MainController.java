@@ -77,7 +77,7 @@ public class MainController {
 
     public void setData(User user) {
         this.user = user;
-        cashierNameId.setText(user.getName());
+        cashierNameId.setText(this.user.getName());
     }
 
     @FXML
@@ -108,7 +108,7 @@ public class MainController {
         } else if (Double.parseDouble(txtUserCash.getText().trim()) >= Double.parseDouble(txtTotal.getText().trim())) {
             boolean isSaveResult = OperationService
                     .INSTANCE
-                    .closeAndSaveOperation(Double.parseDouble(txtTotal.getText()), 0, operationProductsList);
+                    .closeAndSaveOperation(Double.parseDouble(txtTotal.getText()), user.getId(), operationProductsList);
             if (!isSaveResult) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Ошибка при закрытии операции!");
                 alert.show();

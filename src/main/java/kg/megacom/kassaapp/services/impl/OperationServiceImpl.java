@@ -13,7 +13,7 @@ public class OperationServiceImpl implements OperationService {
 
     @Override
     public boolean closeAndSaveOperation(double totalPrice, int userId, List<OperationProducts> operationProductsList) {
-        Operation operation = OperationDb.INSTANCE.saveOperation(new Operation(LocalDateTime.now(), totalPrice));
+        Operation operation = OperationDb.INSTANCE.saveOperation(new Operation(LocalDateTime.now(), totalPrice), userId);
         return OperationProductService.INSTANCE.saveOperationProducts(operation.getId(), operationProductsList);
     }
 }
